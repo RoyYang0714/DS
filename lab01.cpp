@@ -75,5 +75,6 @@ void mazerunner(char maze[N][N], int maze_w, int maze_h, int maze_id[N][N])
 		}
 		if (i == maze_h - 1 && j == maze_w -1) return; 
 	}
+	
 	return;
 }
