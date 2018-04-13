@@ -6,6 +6,7 @@ using namespace std;
 #define N 100
 
 stack<char> ans;
+int flag;
 
 struct maze_tp
 {
@@ -13,6 +14,7 @@ struct maze_tp
 	int id, r, d, l, u;
 };
 
+int maze_judge(int p, int n);
 void mazerunner(maze_tp maze[N][N], int maze_w, int maze_h);
 
 int main()
@@ -47,7 +49,8 @@ void mazerunner(maze_tp maze[N][N], int maze_w, int maze_h)
 	int i = 0;
 	int j = 0;
 	int test = 0;
-	int flag = 0;
+	flag = 0;
+	
 
 	for (int i = 0; i < maze_h; i++) {
 		for (int j = 0; j < maze_w; j++) {
@@ -67,29 +70,11 @@ void mazerunner(maze_tp maze[N][N], int maze_w, int maze_h)
 		maze[0][0].id = 1;
 	}
 	while (1) {
-		usleep(500);
+		//usleep(500);
 		if (maze[i+1][j].id != 1 && i+1 < maze_h && maze[i][j].d != 1) {
 			maze[i][j].d = 1;
-			if (maze[i][j].cont == '(') {
-				if (maze[i+1][j].cont != ')' && maze[i+1][j].cont != '+' && maze[i+1][j].cont != '-' && maze[i+1][j].cont != '*' && maze[i+1][j].cont != '/') {
-					test = 1;
-					flag++;
-				}
-			} 
-			else if (maze[i][j].cont == ')') {
-				if (flag != 0 && maze[i+1][j].cont != '(') {
-					test = 1;
-					flag--;
-				}
-			}
-			else if (maze[i][j].cont == '+' || maze[i][j].cont == '-' || maze[i][j].cont == '*' || maze[i][j].cont == '/') {
-				if (maze[i+1][j].cont != '+' && maze[i+1][j].cont != '-' && maze[i+1][j].cont != '*' && maze[i+1][j].cont != '/' && maze[i+1][j].cont != ')') test = 1;
-			}
-			else{
-				if (maze[i+1][j].cont == '(') test = 0;
-				else if (maze[i+1][j].cont == ')' && flag == 0) test = 0;
-				else test = 1;
-			}
+
+			test = maze_judge (maze[i][j].cont, maze[i+1][j].cont);
 
 			if (test == 1) {
 				i++;
@@ -100,26 +85,8 @@ void mazerunner(maze_tp maze[N][N], int maze_w, int maze_h)
 		} 
 		else if (maze[i][j+1].id != 1 && j+1 < maze_w && maze[i][j].r != 1) {
 			maze[i][j].r = 1;
-			if (maze[i][j].cont == '(') {
-				if (maze[i][j+1].cont != ')' && maze[i][j+1].cont != '+' && maze[i][j+1].cont != '-' && maze[i][j+1].cont != '*' && maze[i][j+1].cont != '/') {
-					test = 1;
-					flag++;
-				}
-			} 
-			else if (maze[i][j].cont == ')') {
-				if (flag != 0 && maze[i][j+1].cont != '(') {
-					test = 1;
-					flag--;
-				}
-			}
-			else if (maze[i][j].cont == '+' || maze[i][j].cont == '-' || maze[i][j].cont == '*' || maze[i][j].cont == '/') {
-				if (maze[i][j+1].cont != '+' && maze[i][j+1].cont != '-' && maze[i][j+1].cont != '*' && maze[i][j+1].cont != '/' && maze[i][j+1].cont != ')') test = 1;
-			}
-			else{
-				if (maze[i+1][j].cont == '(') test = 0;
-				else if (maze[i+1][j].cont == ')' && flag == 0) test = 0;
-				else test = 1;
-			}
+			
+			test = maze_judge (maze[i][j].cont, maze[i][j+1].cont);
 
 			if (test == 1) {
 				j++;
@@ -130,26 +97,8 @@ void mazerunner(maze_tp maze[N][N], int maze_w, int maze_h)
 		} 
 		else if (maze[i][j-1].id != 1 && j > 0 && maze[i][j].l != 1) {
 			maze[i][j].l = 1;
-			if (maze[i][j].cont == '(') {
-				if (maze[i][j-1].cont != ')' && maze[i][j-1].cont != '+' && maze[i][j-1].cont != '-' && maze[i][j-1].cont != '*' && maze[i][j-1].cont != '/') {
-					test = 1;
-					flag++;
-				}
-			} 
-			else if (maze[i][j].cont == ')') {
-				if (flag != 0 && maze[i][j-1].cont != '(') {
-					test = 1;
-					flag--;
-				}
-			}
-			else if (maze[i][j].cont == '+' || maze[i][j].cont == '-' || maze[i][j].cont == '*' || maze[i][j].cont == '/') {
-				if (maze[i][j-1].cont != '+' && maze[i][j-1].cont != '-' && maze[i][j-1].cont != '*' && maze[i][j-1].cont != '/' && maze[i][j-1].cont != ')') test = 1;
-			}
-			else{
-				if (maze[i+1][j].cont == '(') test = 0;
-				else if (maze[i+1][j].cont == ')' && flag == 0) test = 0;
-				else test = 1;
-			}
+			
+			test = maze_judge (maze[i][j].cont, maze[i][j-1].cont);
 
 			if (test = 1) {
 				j--;
@@ -160,26 +109,8 @@ void mazerunner(maze_tp maze[N][N], int maze_w, int maze_h)
 		} 
 		else if (maze[i-1][j].id != 1 && i > 0 && maze[i][j].u != 1) {
 			maze[i][j].u = 1;
-			if (maze[i][j].cont == '(') {
-				if (maze[i-1][j].cont != ')' && maze[i-1][j].cont != '+' && maze[i-1][j].cont != '-' && maze[i-1][j].cont != '*' && maze[i-1][j].cont != '/') {
-					test = 1;
-					flag++;
-				}
-			} 
-			else if (maze[i][j].cont == ')') {
-				if (flag != 0 && maze[i-1][j].cont != '(') {
-					test = 1;
-					flag--;
-				}
-			}
-			else if (maze[i][j].cont == '+' || maze[i][j].cont == '-' || maze[i][j].cont == '*' || maze[i][j].cont == '/') {
-				if (maze[i-1][j].cont != '+' && maze[i-1][j].cont != '-' && maze[i-1][j].cont != '*' && maze[i-1][j].cont != '/' && maze[i-1][j].cont != ')') test = 1;
-			}
-			else{
-				if (maze[i+1][j].cont == '(') test = 0;
-				else if (maze[i+1][j].cont == ')' && flag == 0) test = 0;
-				else test = 1;
-			}
+
+			test = maze_judge (maze[i][j].cont, maze[i-1][j].cont);
 
 			if (test = 1) {
 				i--;
@@ -206,8 +137,34 @@ void mazerunner(maze_tp maze[N][N], int maze_w, int maze_h)
 			ans.pop();
 			return;
 		}
-		cout<<ans.top();
+		//cout<<ans.top();
 	}
 	
 	return;
+}
+
+int maze_judge (int p, int n)
+{
+	int test = 0;
+	if (p == '(') {
+		if (n != ')' && n != '+' && n != '-' && n != '*' && n != '/') {
+			test = 1;
+			flag++;
+		}
+	}
+	else if (p == ')') {
+		if (flag != 0 && n != '(') {
+			test = 1;
+			flag--;
+		}
+	}
+	else if (p == '+' || p == '-' || p == '*' || p == '/') {
+		if (n != '+' && n != '-' && n != '*' && n != '/' && n != ')') test = 1;
+	}
+	else{
+		if (n == '(') test = 0;
+		else if (n == ')' && flag == 0) test = 0;
+		else test = 1;
+	}
+	return test;
 }
