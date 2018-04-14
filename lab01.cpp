@@ -11,7 +11,7 @@ int flag;
 struct maze_tp
 {
 	char cont;
-	int id, r, d, l, u;
+	int id, pi, pj;
 };
 
 int maze_judge(int p, int n);
@@ -49,19 +49,18 @@ void mazerunner(maze_tp maze[N][N], int maze_w, int maze_h)
 	int i = 0;
 	int j = 0;
 	int test = 0;
+	int track = 0;
 	flag = 0;
-	
 
 	for (int i = 0; i < maze_h; i++) {
 		for (int j = 0; j < maze_w; j++) {
 			cin>>maze[i][j].cont;
 			maze[i][j].id = 0;
-			maze[i][j].u = 0;
-			maze[i][j].d = 0;
-			maze[i][j].l = 0;
-			maze[i][j].r = 0;
+			maze[i][j].pi = N;
+			maze[i][j].pj = N;
 			cout<<maze[i][j].cont<<' ';
 		}
+			
 		cout<<endl;
 	}
 	if (maze[0][0].cont == '+' || maze[0][0].cont == '-' || maze[0][0].cont == ')' || maze[0][0].cont == '*' || maze[0][0].cont == '/') return;
@@ -70,33 +69,40 @@ void mazerunner(maze_tp maze[N][N], int maze_w, int maze_h)
 		maze[0][0].id = 1;
 	}
 	while (1) {
-		//usleep(500);
-		if (maze[i+1][j].id != 1 && i+1 < maze_h && maze[i][j].d != 1) {
-			maze[i][j].d = 1;
-
+		usleep(500);
+		cout<<ans.top();
+		//cout<<' '<<i<<' '<<j<<' ';
+		
+		if (maze[i+1][j].id != 1 && i+1 < maze_h && maze[i+1][j].pi != i && maze[i+1][j].pj != j) {
+			maze[i+1][j].id = 1;
+			
 			test = maze_judge (maze[i][j].cont, maze[i+1][j].cont);
 
 			if (test == 1) {
 				i++;
 				ans.push(maze[i][j].cont);
 				maze[i][j].id = 1;
+				maze[i][j].pi = i-1;
+				maze[i][j].pj = j;
 			}
 			test = 0; 
 		} 
-		else if (maze[i][j+1].id != 1 && j+1 < maze_w && maze[i][j].r != 1) {
-			maze[i][j].r = 1;
-			
+		else if (maze[i][j+1].id != 1 && j+1 < maze_w && maze[i][j+1].pi != i && maze[i][j+1].pj != j) {
+			maze[i][j+1].id = 1;
+
 			test = maze_judge (maze[i][j].cont, maze[i][j+1].cont);
 
 			if (test == 1) {
 				j++;
 				ans.push(maze[i][j].cont);
 				maze[i][j].id = 1;
+				maze[i][j].pi = i;
+				maze[i][j].pj = j-1;
 			}
 			test = 0;
 		} 
-		else if (maze[i][j-1].id != 1 && j > 0 && maze[i][j].l != 1) {
-			maze[i][j].l = 1;
+		else if (maze[i][j-1].id != 1 && j > 0 && maze[i][j-1].pi != i && maze[i][j-1].pj != j) {
+			maze[i][j-1].id = 1;
 			
 			test = maze_judge (maze[i][j].cont, maze[i][j-1].cont);
 
@@ -104,40 +110,46 @@ void mazerunner(maze_tp maze[N][N], int maze_w, int maze_h)
 				j--;
 				ans.push(maze[i][j].cont);
 				maze[i][j].id = 1;
+				maze[i][j].pi = i;
+				maze[i][j].pj = j+1;
 			}
 			test = 0;
 		} 
-		else if (maze[i-1][j].id != 1 && i > 0 && maze[i][j].u != 1) {
-			maze[i][j].u = 1;
+		else if (maze[i-1][j].id != 1 && i > 0 && maze[i-1][j].pi != i && maze[i-1][j].pj != j) {
+			maze[i-1][j].id = 1;
 
 			test = maze_judge (maze[i][j].cont, maze[i-1][j].cont);
 
 			if (test = 1) {
 				i--;
 				ans.push(maze[i][j].cont);
-				maze[i][j].id = 1;
+				maze[i][j].pi = i+1;
+				maze[i][j].pj = j;				
 			} 
 			test = 0;
+		}
+		else if (i == 0 && j == 0) {
+			ans.pop();
+			i = maze[i][j].pi;
+			j = maze[i][j].pj;
+			return;
+		}
+		else {
+		//	cout<<endl;
+			ans.pop();
+			maze[i][j].id = 0;
+			i = maze[i][j].pi;
+			j = maze[i][j].pj;
 		}
 		if (i == maze_h-1  && j == maze_w - 1) {
 			if (flag == 0) return;
 			else {
-				if (maze[i-1][j].d == 1) i--;
-				else if ((maze[i][j-1].r == 1)) j--;
+				ans.pop();
+				maze[i][j].id = 0;
+				i = maze[i][j].pi;
+				j = maze[i][j].pj;
 			}
 		}
-		else if (maze[i][j].d && maze[i][j].r && maze[i][j].l && maze[i][j].u) {
-			ans.pop();
-			if (i > 0 && (maze[i-1][j].d == 1)) i--;
-			else if (i+1 < maze_h && (maze[i+1][j].u == 1)) i++;
-			else if (j > 0 && (maze[i][j-1].r == 1)) j--;
-			else if (j+1 < maze_w && (maze[i][j+1].l == 1)) j++;
-		}
-		if (i == 0 && j == 0 && maze[i][j].r == 1 && maze[i][j].d == 1) {
-			ans.pop();
-			return;
-		}
-		//cout<<ans.top();
 	}
 	
 	return;
