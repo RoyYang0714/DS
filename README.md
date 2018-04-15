@@ -1,3 +1,4 @@
 # Data-Structure
 
-lab01 : infix maze
+HW01 : infix maze
+HW02 : Linked List
