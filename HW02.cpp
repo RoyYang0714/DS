@@ -33,10 +33,7 @@ int main()
 	string in;
 	string pin;
 	string ptibin;
-	string del;
-	int flag = 0;
 	string gin;
-
 
 	cin>>in;
 	if (in == "End") cout<<"Empty"<<endl;
@@ -65,7 +62,7 @@ int main()
 			cin>>in;
 		}
 		list.print();
-		//list.free();
+		list.free();
 	}
 	return 0;
 }
