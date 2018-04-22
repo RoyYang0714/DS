@@ -111,8 +111,9 @@ void chain::InsertAfter (string gift, string price, string ptib)
 		tmp = new node;
 		p->next = tmp;
 		p = p->next;
-		tmp->gift = gift;
-		tmp->price = price;	
+		p->gift = gift;
+		p->price = price;	
+		p->next = 0;
 	} else ;
 }
 void chain::Delete (string price)
