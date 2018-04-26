@@ -164,11 +164,18 @@ void chain::Reverse ()
 	node *tmp;
 	tmp = first;
 	if (tmp->next == 0) return;
+	if (first->next->next == 0) {
+		p = first->next;
+		tmp->next = 0;
+		first = p;
+		first->next = tmp;
+		return; 
+	}
 	p = first->next;
 	tmp->next = 0;
 	first = p;
 	p = p->next;
-	first->next = tmp;
+	first->next = tmp; 
 	while (p->next != 0) {
 		tmp = first;
 		first = p;
