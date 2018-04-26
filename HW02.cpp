@@ -27,6 +27,8 @@ private:
 	string ptib;
 };
 
+int empty;
+
 int main()
 {
 	chain list;
@@ -38,16 +40,22 @@ int main()
 	cin>>in;
 	if (in == "End") cout<<"Empty"<<endl;
 	else {
+		while (in != "InsertBack") cin>>in;
 		cin>>gin;
 		cin>>pin;
 		list.init(gin, pin);
+		empty = 0;
 		cin>>in;
 
 		while (in != "End") {
 			if (in == "InsertBack")	{
 				cin>>gin;
 				cin>>pin;
-				list.InsertBack(gin, pin);
+				if (empty == 0) list.InsertBack(gin, pin);
+				else {
+					list.init(gin, pin);
+					empty = 0;
+				}
 			} else if (in == "InsertAfter") {
 				cin>>gin;
 				cin>>pin;
@@ -69,10 +77,11 @@ int main()
 
 void chain::init(string gift, string price)
 {
-	p = new node;
-	p->gift = gift;
-	p->price = price;
-	first = p;	
+	node *tmp;
+	tmp = new node;
+	tmp->gift = gift;
+	tmp->price = price;
+	first = tmp;	
 }
 
 void chain::InsertBack (string gift, string price)
@@ -121,6 +130,12 @@ void chain::Delete (string price)
 	p = first;
 	int test = 0;
 	node *tmp;
+	if (p->next == 0 && p->price != price) return;
+	else if(p->next == 0 && p->price == price) {
+		delete first;
+		empty = 1;
+		return;
+	}
 	tmp = p->next;
 	for ( ;tmp->next != 0 && test == 0; tmp = p->next) {
 		if (tmp->price == price) {
@@ -148,6 +163,7 @@ void chain::Reverse ()
 {
 	node *tmp;
 	tmp = first;
+	if (tmp->next == 0) return;
 	p = first->next;
 	tmp->next = 0;
 	first = p;
@@ -168,6 +184,10 @@ void chain::Reverse ()
 void chain::print()
 {
 	p = first;
+	if (empty == 1) {
+		cout<<"Empty"<<endl;
+		return;
+	}
 	cout<<"List"<<endl;
 	while (p->next != 0) {
 		cout<<'('<<p->gift<<','<<p->price<<')'<<'-'<<'>';
