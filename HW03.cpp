@@ -193,4 +193,8 @@ void Tree::post(TreeNode *p)
 	else cout<<' '<<p->data;
 
 	return;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 7535676816de8018f78a88f0894962225610e450
