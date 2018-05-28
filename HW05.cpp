@@ -32,53 +32,53 @@ int main()
 {
 	int num;
 	int size;
-	e[0].name = 'H';  e[0].mass = 1.01;
-	e[1].name = "He"; e[1].mass = 4.00;
-	e[2].name = "Li"; e[2].mass = 6.94;
-	e[3].name = "Be"; e[3].mass = 9.01;
-	e[4].name = 'B';  e[4].mass = 10.81;
-	e[5].name = 'C';  e[5].mass = 12.01;
-	e[6].name = 'N';  e[6].mass = 14.01;
-	e[7].name = 'O';  e[7].mass = 16.00;
-	e[8].name = 'F';  e[8].mass = 19.00;
-	e[9].name = "Ne"; e[9].mass = 20.18;
+	e[0].name = 'H';  e[0].mass = 1.0079;
+	e[1].name = "He"; e[1].mass = 4.0026;
+	e[2].name = "Li"; e[2].mass = 6.9412;
+	e[3].name = "Be"; e[3].mass = 9.0121;
+	e[4].name = 'B';  e[4].mass = 10.811;
+	e[5].name = 'C';  e[5].mass = 12.010;
+	e[6].name = 'N';  e[6].mass = 14.006;
+	e[7].name = 'O';  e[7].mass = 15.999;
+	e[8].name = 'F';  e[8].mass = 18.998;
+	e[9].name = "Ne"; e[9].mass = 20.179;
 
-	e[10].name = "Na"; e[10].mass = 22.99;
-	e[11].name = "Mg"; e[11].mass = 24.31;
-	e[12].name = "Al"; e[12].mass = 26.98;
-	e[13].name = "Si"; e[13].mass = 28.09;
-	e[14].name = 'P';  e[14].mass = 30.97;
-	e[15].name = 'S';  e[15].mass = 32.07;
-	e[16].name = "Cl"; e[16].mass = 35.45;
-	e[17].name = "Ar"; e[17].mass = 39.95;
-	e[18].name = 'K';  e[18].mass = 39.10;
-	e[19].name = "Ca"; e[19].mass = 40.08;
+	e[10].name = "Na"; e[10].mass = 22.989;
+	e[11].name = "Mg"; e[11].mass = 24.305;
+	e[12].name = "Al"; e[12].mass = 26.981;
+	e[13].name = "Si"; e[13].mass = 28.085;
+	e[14].name = 'P';  e[14].mass = 30.973;
+	e[15].name = 'S';  e[15].mass = 32.065;
+	e[16].name = "Cl"; e[16].mass = 35.453;
+	e[17].name = "Ar"; e[17].mass = 39.948;
+	e[18].name = 'K';  e[18].mass = 39.098;
+	e[19].name = "Ca"; e[19].mass = 40.078;
 
-	e[20].name = "Se"; e[20].mass = 44.96;
-	e[21].name = "Ti"; e[21].mass = 47.87;
-	e[22].name = 'V';  e[22].mass = 50.94;
-	e[23].name = "Cr"; e[23].mass = 52.00;
-	e[24].name = "Mn"; e[24].mass = 54.94;
-	e[25].name = "Fe"; e[25].mass = 55.85;
-	e[26].name = "Co"; e[26].mass = 55.93;
-	e[27].name = "Ni"; e[27].mass = 58.69;
-	e[28].name = "Cu"; e[28].mass = 63.55;
-	e[29].name = "Zn"; e[29].mass = 65.41;
+	e[20].name = "Se"; e[20].mass = 44.955;
+	e[21].name = "Ti"; e[21].mass = 47.867;
+	e[22].name = 'V';  e[22].mass = 50.941;
+	e[23].name = "Cr"; e[23].mass = 51.996;
+	e[24].name = "Mn"; e[24].mass = 54.938;
+	e[25].name = "Fe"; e[25].mass = 55.845;
+	e[26].name = "Co"; e[26].mass = 55.933;
+	e[27].name = "Ni"; e[27].mass = 58.693;
+	e[28].name = "Cu"; e[28].mass = 63.546;
+	e[29].name = "Zn"; e[29].mass = 65.409;
 
-	e[30].name = "Ga"; e[30].mass = 69.72;
-	e[31].name = "Ge"; e[31].mass = 72.64;
-	e[32].name = "As"; e[32].mass = 74.92;
-	e[33].name = "Se"; e[33].mass = 78.96;
-	e[34].name = "Br"; e[34].mass = 79.90;
-	e[35].name = "Kr"; e[35].mass = 83.80;
-	e[36].name = "Rb"; e[36].mass = 85.47;
-	e[37].name = "Sr"; e[37].mass = 87.62;
-	e[38].name = 'Y';  e[38].mass = 88.91;
-	e[39].name = "Zr"; e[39].mass = 91.22;
+	e[30].name = "Ga"; e[30].mass = 69.723;
+	e[31].name = "Ge"; e[31].mass = 72.641;
+	e[32].name = "As"; e[32].mass = 74.921;
+	e[33].name = "Se"; e[33].mass = 78.963;
+	e[34].name = "Br"; e[34].mass = 79.904;
+	e[35].name = "Kr"; e[35].mass = 83.798;
+	e[36].name = "Rb"; e[36].mass = 85.467;
+	e[37].name = "Sr"; e[37].mass = 87.621;
+	e[38].name = 'Y';  e[38].mass = 88.905;
+	e[39].name = "Zr"; e[39].mass = 91.224;
 
-	e[40].name = "Nb"; e[40].mass = 92.91;
-	e[41].name = "Mo"; e[41].mass = 95.94;
-	e[42].name = "Tc"; e[42].mass = 98.91;
+	e[40].name = "Nb"; e[40].mass = 92.906;
+	e[41].name = "Mo"; e[41].mass = 95.942;
+	e[42].name = "Tc"; e[42].mass = 98.906;
 	e[43].name = "Ru"; e[43].mass = 101.07;
 	e[44].name = "Rh"; e[44].mass = 102.90;
 	e[45].name = "Pd"; e[45].mass = 106.42;
@@ -162,7 +162,7 @@ int main()
 			cin>>a[i].name;
 			cin>>a[i].sh;
 			cin>>a[i].mass;
-			//if (a[i].mass == 0) caculate(i);
+			if (a[i].mass == 0) caculate(i);
 		}
 
 		qsort(0, size-1);
@@ -203,12 +203,35 @@ void caculate(int p)
 {
 	int flag=0;
 	int tmp=0;
+	string cp;
+	int select;
+	int number;
 
 	for (int i=0; i<a[p].sh.size(); i++) {
+		number=0;
 		switch (a[p].sh[i]) {
 			case '(' : 
 			{
-				tmp=i+1;
+				while (tmp < i) {
+					select=0;
+					for (int j=0; j<107; j++) {
+						if (a[p].sh[tmp]+a[p].sh[tmp+1] == e[j].name[0]+e[j].name[1]) {
+							a[p].mass+=e[j].mass;
+							tmp+=2;
+							j=107;
+							select=1;
+						}
+					}
+					for (int j=0; j<107 && select==0; j++) {
+						if (a[p].sh[tmp] == e[j].name[0]) {
+							a[p].mass+=e[j].mass;
+							tmp+=1;
+							j=107;
+							select=0;
+						}
+					}
+				}
+				tmp++;
 				flag = 1; 
 				break;
 			}
@@ -217,39 +240,218 @@ void caculate(int p)
 				switch (a[p].sh[i+1]) {
 					case '2' :
 					{
-						
+						while (tmp < i) {
+							select=0;
+							for (int j=0; j<107; j++) {
+								if (a[p].sh[tmp]+a[p].sh[tmp+1] == e[j].name[0]+e[j].name[1]) {
+									a[p].mass+=e[j].mass*2;
+									tmp+=2;
+									j=107;
+									select=1;
+								}
+							}
+							for (int j=0; j<107 && select==0; j++) {
+								if (a[p].sh[tmp] == e[j].name[0]) {
+									a[p].mass+=e[j].mass*2;
+									tmp+=1;
+									j=107;
+									select=0;
+								}
+							}
+						}
+						tmp++;
 						break;
 					}
 					case '3' :
 					{
+						while (tmp < i) {
+							select=0;
+							for (int j=0; j<107; j++) {
+								if (a[p].sh[tmp]+a[p].sh[tmp+1] == e[j].name[0]+e[j].name[1]) {
+									a[p].mass+=e[j].mass*3;
+									tmp+=2;
+									j=107;
+									select=1;
+								}
+							}
+							for (int j=0; j<107 && select==0; j++) {
+								if (a[p].sh[tmp] == e[j].name[0]) {
+									a[p].mass+=e[j].mass*3;
+									tmp+=1;
+									j=107;
+									select=0;
+								}
+							}
+						}
+						tmp++;
 						break;
 					}
 					case '4' :
 					{
+						while (tmp < i) {
+							select=0;
+							for (int j=0; j<107; j++) {
+								if (a[p].sh[tmp]+a[p].sh[tmp+1] == e[j].name[0]+e[j].name[1]) {
+									a[p].mass+=e[j].mass*4;
+									tmp+=2;
+									j=107;
+									select=1;
+								}
+							}
+							for (int j=0; j<107 && select==0; j++) {
+								if (a[p].sh[tmp] == e[j].name[0]) {
+									a[p].mass+=e[j].mass*4;
+									tmp+=1;
+									j=107;
+									select=0;
+								}
+							}
+						}
+						tmp++;
 						break;
 					}
 					case '5' :
 					{
+						while (tmp < i) {
+							select=0;
+							for (int j=0; j<107; j++) {
+								if (a[p].sh[tmp]+a[p].sh[tmp+1] == e[j].name[0]+e[j].name[1]) {
+									a[p].mass+=e[j].mass*5;
+									tmp+=2;
+									j=107;
+									select=1;
+								}
+							}
+							for (int j=0; j<107 && select==0; j++) {
+								if (a[p].sh[tmp] == e[j].name[0]) {
+									a[p].mass+=e[j].mass*5;
+									tmp+=1;
+									j=107;
+									select=0;
+								}
+							}
+						}
+						tmp++;
 						break;
 					}
 					case '6' :
 					{
+						while (tmp < i) {
+							select=0;
+							for (int j=0; j<107; j++) {
+								if (a[p].sh[tmp]+a[p].sh[tmp+1] == e[j].name[0]+e[j].name[1]) {
+									a[p].mass+=e[j].mass*6;
+									tmp+=2;
+									j=107;
+									select=1;
+								}
+							}
+							for (int j=0; j<107 && select==0; j++) {
+								if (a[p].sh[tmp] == e[j].name[0]) {
+									a[p].mass+=e[j].mass*6;
+									tmp+=1;
+									j=107;
+									select=0;
+								}
+							}
+						}
+						tmp++;
 						break;
 					}
 					case '7' :
 					{
+						while (tmp < i) {
+							select=0;
+							for (int j=0; j<107; j++) {
+								if (a[p].sh[tmp]+a[p].sh[tmp+1] == e[j].name[0]+e[j].name[1]) {
+									a[p].mass+=e[j].mass*7;
+									tmp+=2;
+									j=107;
+									select=1;
+								}
+							}
+							for (int j=0; j<107 && select==0; j++) {
+								if (a[p].sh[tmp] == e[j].name[0]) {
+									a[p].mass+=e[j].mass*7;
+									tmp+=1;
+									j=107;
+									select=0;
+								}
+							}
+						}
+						tmp++;
 						break;
 					}
 					case '8' :
 					{
+						while (tmp < i) {
+							select=0;
+							for (int j=0; j<107; j++) {
+								if (a[p].sh[tmp]+a[p].sh[tmp+1] == e[j].name[0]+e[j].name[1]) {
+									a[p].mass+=e[j].mass*8;
+									tmp+=2;
+									j=107;
+									select=1;
+								}
+							}
+							for (int j=0; j<107 && select==0; j++) {
+								if (a[p].sh[tmp] == e[j].name[0]) {
+									a[p].mass+=e[j].mass*8;
+									tmp+=1;
+									j=107;
+									select=0;
+								}
+							}
+						}
+						tmp++;
 						break;
 					}
 					case '9' :
 					{
+						while (tmp < i) {
+							select=0;
+							for (int j=0; j<107; j++) {
+								if (a[p].sh[tmp]+a[p].sh[tmp+1] == e[j].name[0]+e[j].name[1]) {
+									a[p].mass+=e[j].mass*9;
+									tmp+=2;
+									j=107;
+									select=1;
+								}
+							}
+							for (int j=0; j<107 && select==0; j++) {
+								if (a[p].sh[tmp] == e[j].name[0]) {
+									a[p].mass+=e[j].mass*9;
+									tmp+=1;
+									j=107;
+									select=0;
+								}
+							}
+						}
+						tmp++;
 						break;
 					}
 					default :
 					{
+						while (tmp < i) {
+							select=0;
+							for (int j=0; j<107; j++) {
+								if (a[p].sh[tmp]+a[p].sh[tmp+1] == e[j].name[0]+e[j].name[1]) {
+									a[p].mass+=e[j].mass;
+									tmp+=2;
+									j=107;
+									select=1;
+								}
+							}
+							for (int j=0; j<107 && select==0; j++) {
+								if (a[p].sh[tmp] == e[j].name[0]) {
+									a[p].mass+=e[j].mass;
+									tmp+=1;
+									j=107;
+									select=0;
+								}
+							}
+						}
+						tmp++;
 						break;
 					}
 				}
@@ -258,36 +460,219 @@ void caculate(int p)
 			}
 			case '2' :
 			{
+				while (tmp < i) {
+					select=0;
+					for (int j=0; j<107; j++) {
+						if (a[p].sh[tmp]+a[p].sh[tmp+1] == e[j].name[0]+e[j].name[1]) {
+							a[p].mass+=e[j].mass*2;
+							tmp+=2;
+							j=107;
+							select=1;
+						}
+					}
+					for (int j=0; j<107 && select==0; j++) {
+						if (a[p].sh[tmp] == e[j].name[0]) {
+							a[p].mass+=e[j].mass*2;
+							tmp+=1;
+							j=107;
+							select=0;
+						}
+					}
+				}
+				tmp++;
 				break;
 			}
 			case '3' :
 			{
+				while (tmp < i) {
+					select=0;
+					for (int j=0; j<107; j++) {
+						if (a[p].sh[tmp]+a[p].sh[tmp+1] == e[j].name[0]+e[j].name[1]) {
+							a[p].mass+=e[j].mass*3;
+							tmp+=2;
+							j=107;
+							select=1;
+						}
+					}
+					for (int j=0; j<107 && select==0; j++) {
+						if (a[p].sh[tmp] == e[j].name[0]) {
+							a[p].mass+=e[j].mass*3;
+							tmp+=1;
+							j=107;
+							select=0;
+						}
+					}
+				}
+				tmp++;
 				break;
 			}
 			case '4' :
 			{
+				while (tmp < i) {
+					select=0;
+					for (int j=0; j<107; j++) {
+						if (a[p].sh[tmp]+a[p].sh[tmp+1] == e[j].name[0]+e[j].name[1]) {
+							a[p].mass+=e[j].mass*4;
+							tmp+=2;
+							j=107;
+							select=1;
+						}
+					}
+					for (int j=0; j<107 && select==0; j++) {
+						if (a[p].sh[tmp] == e[j].name[0]) {
+							a[p].mass+=e[j].mass*4;
+							tmp+=1;
+							j=107;
+							select=0;
+						}
+					}
+				}
+				tmp++;
 				break;
 			}
 			case '5' :
 			{
+				while (tmp < i) {
+					select=0;
+					for (int j=0; j<107; j++) {
+						if (a[p].sh[tmp]+a[p].sh[tmp+1] == e[j].name[0]+e[j].name[1]) {
+							a[p].mass+=e[j].mass*5;
+							tmp+=2;
+							j=107;
+							select=1;
+						}
+					}
+					for (int j=0; j<107 && select==0; j++) {
+						if (a[p].sh[tmp] == e[j].name[0]) {
+							a[p].mass+=e[j].mass*5;
+							tmp+=1;
+							j=107;
+							select=0;
+						}
+					}
+				}
+				tmp++;
 				break;
 			}
 			case '6' :
 			{
+				while (tmp < i) {
+					select=0;
+					for (int j=0; j<107; j++) {
+						if (a[p].sh[tmp]+a[p].sh[tmp+1] == e[j].name[0]+e[j].name[1]) {
+							a[p].mass+=e[j].mass*6;
+							tmp+=2;
+							j=107;
+							select=1;
+						}
+					}
+					for (int j=0; j<107 && select==0; j++) {
+						if (a[p].sh[tmp] == e[j].name[0]) {
+							a[p].mass+=e[j].mass*6;
+							tmp+=1;
+							j=107;
+							select=0;
+						}
+					}
+				}
+				tmp++;
 				break;
 			}
 			case '7' :
 			{
+				while (tmp < i) {
+					select=0;
+					for (int j=0; j<107; j++) {
+						if (a[p].sh[tmp]+a[p].sh[tmp+1] == e[j].name[0]+e[j].name[1]) {
+							a[p].mass+=e[j].mass*7;
+							tmp+=2;
+							j=107;
+							select=1;
+						}
+					}
+					for (int j=0; j<107 && select==0; j++) {
+						if (a[p].sh[tmp] == e[j].name[0]) {
+							a[p].mass+=e[j].mass*7;
+							tmp+=1;
+							j=107;
+							select=0;
+						}
+					}
+				}
+				tmp++;
 				break;
 			}
 			case '8' :
 			{
+				while (tmp < i) {
+					select=0;
+					for (int j=0; j<107; j++) {
+						if (a[p].sh[tmp]+a[p].sh[tmp+1] == e[j].name[0]+e[j].name[1]) {
+							a[p].mass+=e[j].mass*8;
+							tmp+=2;
+							j=107;
+							select=1;
+						}
+					}
+					for (int j=0; j<107 && select==0; j++) {
+						if (a[p].sh[tmp] == e[j].name[0]) {
+							a[p].mass+=e[j].mass*8;
+							tmp+=1;
+							j=107;
+							select=0;
+						}
+					}
+				}
+				tmp++;
 				break;
 			}
 			case '9' :
 			{
+				while (tmp < i) {
+					select=0;
+					for (int j=0; j<107; j++) {
+						if (a[p].sh[tmp]+a[p].sh[tmp+1] == e[j].name[0]+e[j].name[1]) {
+							a[p].mass+=e[j].mass*9;
+							tmp+=2;
+							j=107;
+							select=1;
+						}
+					}
+					for (int j=0; j<107 && select==0; j++) {
+						if (a[p].sh[tmp] == e[j].name[0]) {
+							a[p].mass+=e[j].mass*9;
+							tmp+=1;
+							j=107;
+							select=0;
+						}
+					}
+				}
+				tmp++;
 				break;
 			}
+		}
+		if (i == a[p].sh.size()-1 && tmp != a[p].sh.size())
+		{
+			while (tmp <= i) {
+				select=0;
+				for (int j=0; j<107; j++) {
+					if (a[p].sh[tmp]+a[p].sh[tmp+1] == e[j].name[0]+e[j].name[1]) {
+						a[p].mass+=e[j].mass;
+						tmp+=2;
+						j=107;
+						select=1;
+					}
+				}
+				for (int j=0; j<107 && select==0; j++) {
+					if (a[p].sh[tmp] == e[j].name[0]) {
+						a[p].mass+=e[j].mass;
+						tmp+=1;
+						j=107;
+						select=0;
+					}
+				}
+			}
+			tmp++;
 		}
 	}
 
