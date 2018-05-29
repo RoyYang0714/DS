@@ -169,10 +169,10 @@ int main()
 		qsort(0, size-1);
 		
 		for (int i=0; i<size; i++) {
-			cout<<a[i].name<<" ";
-			for (unsigned int j=1; j<40-a[i].name.size(); j++) cout<<" ";
-			cout<<a[i].sh<<" ";
-			for (unsigned int j=1; j<25-a[i].sh.size(); j++) cout<<" ";
+			cout<<a[i].name;
+			for (unsigned int j=0; j<40-a[i].name.size(); j++) cout<<" ";
+			cout<<a[i].sh;
+			for (unsigned int j=0; j<25-a[i].sh.size(); j++) cout<<" ";
 			cout<<fixed<<right<<setw(10)<<setprecision(2)<<a[i].mass<<endl;
 		}
 		cout<<count<<" swaps during qsort"<<endl;
@@ -194,8 +194,8 @@ void qsort(const int left, const int right)
 			if (i < j) swap (i, j);
 		} while (i < j);
 		if (pivot != a[j].mass) swap (left, j);
-		if (left>=0 && j-1<size) qsort(left, j-1);
-		if (j+1>=0 && right<size) qsort(j+1, right);
+		qsort(left, j-1);
+		qsort(j+1, right);
 	}
 	return;
 }
