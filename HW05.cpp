@@ -1,13 +1,13 @@
 #include<iostream>
 #include<iomanip>
 #include<string>
-#define N 2000
+#define N 1800
 
 using namespace std;
 
 void qsort(const int left, const int right);
 void caculate(int p);
-void swap(double a, double b);
+void swap(int l, int r);
 
 struct test
 {
@@ -27,11 +27,12 @@ mole a[N];
 test e[107];
 
 int count;
+int size;
 
 int main()
 {
 	int num;
-	int size;
+	
 	e[0].name = 'H';  e[0].mass = 1.01;
 	e[1].name = "He"; e[1].mass = 4.00;
 	e[2].name = "Li"; e[2].mass = 6.94;
@@ -169,9 +170,9 @@ int main()
 		
 		for (int i=0; i<size; i++) {
 			cout<<a[i].name<<" ";
-			for (int j=1; j<40-a[i].name.size(); j++) cout<<" ";
+			for (unsigned int j=1; j<40-a[i].name.size(); j++) cout<<" ";
 			cout<<a[i].sh<<" ";
-			for (int j=1; j<25-a[i].sh.size(); j++) cout<<" ";
+			for (unsigned int j=1; j<25-a[i].sh.size(); j++) cout<<" ";
 			cout<<fixed<<right<<setw(10)<<setprecision(2)<<a[i].mass<<endl;
 		}
 		cout<<count<<" swaps during qsort"<<endl;
@@ -190,11 +191,11 @@ void qsort(const int left, const int right)
 		do {
 			do j--; while (a[j].mass > pivot);
 			do i++; while (i < j && a[i].mass <= pivot);
-			if (i < j) swap (a[i].mass, a[j].mass);
+			if (i < j) swap (i, j);
 		} while (i < j);
-		if (pivot != a[j].mass) swap (pivot, a[j].mass);
-		qsort(left, j-1);
-		qsort(j+1, right);
+		if (pivot != a[j].mass) swap (left, j);
+		if (left>=0 && j-1<size) qsort(left, j-1);
+		if (j+1>=0 && right<size) qsort(j+1, right);
 	}
 	return;
 }
@@ -207,25 +208,26 @@ void caculate(int p)
 	int m;
 	int select;
 
-	for (int i=0; i<a[p].sh.size(); i++) {
-		if (a[p].sh[i] == '(') flag = 1; 
+	for (unsigned int i=0; i<a[p].sh.size(); i++) {
+		if (a[p].sh[i] == '(') flag++; 
 		else if (a[p].sh[i] == ')' )
 		{
-
+			flag--;
 		} else {
 			select=0;
+			t = '0';
 			for (int j=0; j<107; j++) {
-				if (a[p].sh.size() > i+1 && a[p].sh[i]+a[p].sh[i+1] == e[j].name[0]+e[j].name[1]) {
-					if (a[p].sh.size() > i+2 && a[p].sh[i+2] <= '9') {
-						if (a[p].sh.size() > i+3 && a[p].sh[i+3] <= '9') {
+				if (a[p].sh.size() >= i+1 && a[p].sh[i]+a[p].sh[i+1] == e[j].name[0]+e[j].name[1]) {
+					if (a[p].sh.size() >= i+2 && a[p].sh[i+2] <= '9') {
+						if (a[p].sh.size() >= i+3 && a[p].sh[i+3] <= '9') {
 							t = t.append(a[p].sh,i+2,2);
 							m = stoi(t);
-							a[p].mass+=e[j].mass*m;
+							a[p].mass = (a[p].mass + e[j].mass*m);
 							i+=3;
 						} else {
 							t = t.append(a[p].sh,i+2,1);
 							m = stoi(t);
-							a[p].mass+=e[j].mass*m;
+							a[p].mass = (a[p].mass + e[j].mass*m);
 							i+=2;
 						}
 					} else {
@@ -238,16 +240,16 @@ void caculate(int p)
 			}
 			for (int j=0; j<107 && select==0; j++) {
 				if (a[p].sh[i] == e[j].name[0]) {
-					if (a[p].sh.size() > i+1 && a[p].sh[i+1] <= '9') {
-						if (a[p].sh[i+2] <= '9') {
+					if (a[p].sh.size() >= i+1 && a[p].sh[i+1] <= '9') {
+						if (a[p].sh.size() >= i+2 && a[p].sh[i+2] <= '9') {
 							t = t.append(a[p].sh,i+1,2);
 							m = stoi(t);
-							a[p].mass+=e[j].mass*m;
+							a[p].mass = a[p].mass + (e[j].mass*m);
 							i+=2;
 						} else {
 							t = t.append(a[p].sh,i+1,1);
 							m = stoi(t);
-							a[p].mass+=e[j].mass*m;
+							a[p].mass = a[p].mass + (e[j].mass*m);
 							i+=1;
 						}
 					} else a[p].mass+=e[j].mass;
@@ -260,19 +262,13 @@ void caculate(int p)
 	return;
 }
 
-void swap(double l, double r)
+void swap(int l, int r)
 {
 	mole tmp;
-	int t;
-	for (int i=0; i<N; i++) {
-		if (a[i].mass == l) {
-			tmp = a[i];
-			t=i;
-		} else if (a[i].mass == r) {
-			a[t] = a[i];
-			a[i] = tmp;		
-		}
-	}
+	tmp = a[l];
+	a[l] = a[r];
+	a[r]=tmp;
+
 	count++;
 
 	return;
