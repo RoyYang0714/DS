@@ -6,7 +6,7 @@
 using namespace std;
 
 void qsort(const int left, const int right);
-void caculate(int p);
+double caculate(int p);
 void swap(int l, int r);
 
 struct test
@@ -28,36 +28,37 @@ test e[118];
 
 int count;
 int size;
+unsigned int index;
 
 int main()
 {
 	int num;
 	
-	e[0].name = 'H';  e[0].mass = 1.00;
+	e[0].name = "H";  e[0].mass = 1.00;
 	e[1].name = "He"; e[1].mass = 4.00;
 	e[2].name = "Li"; e[2].mass = 7.00;
 	e[3].name = "Be"; e[3].mass = 9.00;
-	e[4].name = 'B';  e[4].mass = 11.00;
-	e[5].name = 'C';  e[5].mass = 12.00;
-	e[6].name = 'N';  e[6].mass = 14.00;
-	e[7].name = 'O';  e[7].mass = 16.00;
-	e[8].name = 'F';  e[8].mass = 19.00;
+	e[4].name = "B";  e[4].mass = 11.00;
+	e[5].name = "C";  e[5].mass = 12.00;
+	e[6].name = "N";  e[6].mass = 14.00;
+	e[7].name = "O";  e[7].mass = 16.00;
+	e[8].name = "F";  e[8].mass = 19.00;
 	e[9].name = "Ne"; e[9].mass = 20.00;
 
 	e[10].name = "Na"; e[10].mass = 23.00;
 	e[11].name = "Mg"; e[11].mass = 24.00;
 	e[12].name = "Al"; e[12].mass = 27.00;
 	e[13].name = "Si"; e[13].mass = 28.00;
-	e[14].name = 'P';  e[14].mass = 31.00;
-	e[15].name = 'S';  e[15].mass = 32.00;
+	e[14].name = "P";  e[14].mass = 31.00;
+	e[15].name = "S";  e[15].mass = 32.00;
 	e[16].name = "Cl"; e[16].mass = 35.00;
 	e[17].name = "Ar"; e[17].mass = 40.00;
-	e[18].name = 'K';  e[18].mass = 39.00;
+	e[18].name = "K";  e[18].mass = 39.00;
 	e[19].name = "Ca"; e[19].mass = 40.00;
 
-	e[20].name = "Se"; e[20].mass = 45.00;
+	e[20].name = "Sc"; e[20].mass = 45.00;
 	e[21].name = "Ti"; e[21].mass = 48.00;
-	e[22].name = 'V';  e[22].mass = 51.00;
+	e[22].name = "V";  e[22].mass = 51.00;
 	e[23].name = "Cr"; e[23].mass = 52.00;
 	e[24].name = "Mn"; e[24].mass = 55.00;
 	e[25].name = "Fe"; e[25].mass = 56.00;
@@ -74,7 +75,7 @@ int main()
 	e[35].name = "Kr"; e[35].mass = 84.00;
 	e[36].name = "Rb"; e[36].mass = 85.00;
 	e[37].name = "Sr"; e[37].mass = 88.00;
-	e[38].name = 'Y';  e[38].mass = 89.00;
+	e[38].name = "Y";  e[38].mass = 89.00;
 	e[39].name = "Zr"; e[39].mass = 91.00;
 
 	e[40].name = "Nb"; e[40].mass = 93.00;
@@ -90,7 +91,7 @@ int main()
 
 	e[50].name = "Sb"; e[50].mass = 122.00;
 	e[51].name = "Te"; e[51].mass = 128.00;
-	e[52].name = 'I';  e[52].mass = 127.00;
+	e[52].name = "I";  e[52].mass = 127.00;
 	e[53].name = "Xe"; e[53].mass = 131.00;
 	e[54].name = "Cs"; e[54].mass = 133.00;
 	e[55].name = "Ba"; e[55].mass = 137.00;
@@ -113,7 +114,7 @@ int main()
 	e[70].name = "Lu"; e[70].mass = 175.00;
 	e[71].name = "Hf"; e[71].mass = 178.00;
 	e[72].name = "Ta"; e[72].mass = 181.00;
-	e[73].name = 'W';  e[73].mass = 184.00;
+	e[73].name = "W";  e[73].mass = 184.00;
 	e[74].name = "Re"; e[74].mass = 186.00;
 	e[75].name = "Os"; e[75].mass = 190.00;
 	e[76].name = "Ir"; e[76].mass = 192.00;
@@ -130,10 +131,10 @@ int main()
 	e[86].name = "Fr"; e[86].mass = 223.00;
 	e[87].name = "Ra"; e[87].mass = 226.00;
 	e[88].name = "Ac"; e[88].mass = 227.00;
-	e[89].name = "Th"; e[89].mass = 223.00;
+	e[89].name = "Th"; e[89].mass = 232.00;
 
 	e[90].name = "Pa"; e[90].mass = 231.00;
-	e[91].name = 'U';  e[91].mass = 238.00;
+	e[91].name = "U";  e[91].mass = 238.00;
 	e[92].name = "Np"; e[92].mass = 237.00;
 	e[93].name = "Pu"; e[93].mass = 244.00;
 	e[94].name = "Am"; e[94].mass = 243.00;
@@ -153,15 +154,14 @@ int main()
 	e[107].name = "Hs"; e[107].mass = 270.00;
 	e[108].name = "Mt"; e[108].mass = 278.00;
 	e[109].name = "Ds"; e[109].mass = 281.00;
-
-	e[110].name = "Rg"; e[100].mass = 281.00;
-	e[111].name = "Cn"; e[101].mass = 285.00;
-	e[112].name = "Nh"; e[102].mass = 286.00;
-	e[113].name = "Fl"; e[103].mass = 289.00;
-	e[114].name = "Mc"; e[104].mass = 289.00;
-	e[115].name = "Lv"; e[105].mass = 293.00;
-	e[116].name = "Ts"; e[106].mass = 293.00;
-	e[117].name = "Og"; e[107].mass = 294.00;
+	e[110].name = "Rg"; e[110].mass = 281.00;
+	e[111].name = "Cn"; e[111].mass = 285.00;
+	e[112].name = "Nh"; e[112].mass = 286.00;
+	e[113].name = "Fl"; e[113].mass = 289.00;
+	e[114].name = "Mc"; e[114].mass = 289.00;
+	e[115].name = "Lv"; e[115].mass = 293.00;
+	e[116].name = "Ts"; e[116].mass = 293.00;
+	e[117].name = "Og"; e[117].mass = 294.00;
 
 	cin>>num;
 	cout<<num<<endl;
@@ -175,7 +175,10 @@ int main()
 			cin>>a[i].name;
 			cin>>a[i].sh;
 			cin>>a[i].mass;
-			if (a[i].mass == 0) caculate(i);
+			if (a[i].mass == 0) {
+				index = 0;
+				a[i].mass = caculate(i);
+			}
 		}
 
 		qsort(0, size-1);
@@ -212,66 +215,85 @@ void qsort(const int left, const int right)
 	return;
 }
 
-void caculate(int p)
+double caculate(int p)
 {
-	int flag=0;
-	string cp;
+	double ans=0;
 	string t;
-	int m;
 	int select;
+	int m;
+	int z;
 
-	for (unsigned int i=0; i<a[p].sh.size(); i++) {
-		if (a[p].sh[i] == '(') flag++; 
-		else if (a[p].sh[i] == ')' )
-		{
-			flag--;
+	while (index < a[p].sh.size()) {
+		if (a[p].sh[index] == '(') {
+			index++;
+			ans += caculate(p);
+		} else if (a[p].sh[index] == ')') {
+			if (a[p].sh.size() > index+1 && a[p].sh[index+1] <= '9' && a[p].sh[index+1] != ')' && a[p].sh[index+1] != '(') {
+				for (z=index+1; z < a[p].sh.size() && a[p].sh[z] <= '9' && a[p].sh[z] != ')' && a[p].sh[z] != '('; z++);
+				t = '0';
+				t = t.append(a[p].sh,index+1,z-index);
+				m = stoi(t);
+				ans *= m;
+				index+=z-index;
+				return ans;
+			} else {
+				index++;
+				return ans;
+			}					
+		} else if (a[p].sh[index] == '[') {
+			index++;
+			//ans += caculate(p);
+		} else if (a[p].sh[index] == ']') {
+			if (a[p].sh.size() > index+1 && a[p].sh[index+1] <= '9' && a[p].sh[index+1] != ')' && a[p].sh[index+1] != '(') {
+				for (z=index+1; z < a[p].sh.size() && a[p].sh[z] <= '9' && a[p].sh[z] != ')' && a[p].sh[z] != '('; z++);
+				t = '0';
+				t = t.append(a[p].sh,index+1,z-index);
+				m = stoi(t);
+				ans *= m;
+				index+=z-index;
+				return ans;
+			} else {
+				index++;
+				return ans;
+			}
 		} else {
-			select=0;
 			t = '0';
-			for (int j=0; j<107; j++) {
-				if (a[p].sh.size() >= i+1 && a[p].sh[i]+a[p].sh[i+1] == e[j].name[0]+e[j].name[1]) {
-					if (a[p].sh.size() >= i+2 && a[p].sh[i+2] <= '9') {
-						if (a[p].sh.size() >= i+3 && a[p].sh[i+3] <= '9') {
-							t = t.append(a[p].sh,i+2,2);
-							m = stoi(t);
-							a[p].mass = (a[p].mass + e[j].mass*m);
-							i+=3;
-						} else {
-							t = t.append(a[p].sh,i+2,1);
-							m = stoi(t);
-							a[p].mass = (a[p].mass + e[j].mass*m);
-							i+=2;
-						}
+			select=0;
+			for (int j=0; j<118; j++) {
+				if (a[p].sh.size() > index+1 && a[p].sh[index] == e[j].name[0] && a[p].sh[index+1] == e[j].name[1]) {
+					if (a[p].sh.size() > index+2 && a[p].sh[index+2] <= '9' && a[p].sh[index+2] != ')' && a[p].sh[index+2] != '(') {
+						for (z=index+2; z < a[p].sh.size() && a[p].sh[z] <= '9' && a[p].sh[z] != ')' && a[p].sh[z] != '('; z++);
+						t = t.append(a[p].sh,index+2,z-index);
+						m = stoi(t);
+						ans += e[j].mass*m;
+						index+=z-index;
 					} else {
-						a[p].mass+=e[j].mass;
-						i+=1;
+						ans += e[j].mass;
+						index+=2;
 					}
 					j=107;
 					select=1;
 				}
 			}
-			for (int j=0; j<107 && select==0; j++) {
-				if (a[p].sh[i] == e[j].name[0]) {
-					if (a[p].sh.size() >= i+1 && a[p].sh[i+1] <= '9') {
-						if (a[p].sh.size() >= i+2 && a[p].sh[i+2] <= '9') {
-							t = t.append(a[p].sh,i+1,2);
-							m = stoi(t);
-							a[p].mass = a[p].mass + (e[j].mass*m);
-							i+=2;
-						} else {
-							t = t.append(a[p].sh,i+1,1);
-							m = stoi(t);
-							a[p].mass = a[p].mass + (e[j].mass*m);
-							i+=1;
-						}
-					} else a[p].mass+=e[j].mass;
+			for (int j=0; j<118 && select==0; j++) {
+				if (a[p].sh[index] == e[j].name[0] && e[j].name[1] == 0) {
+					if (a[p].sh.size() > index+1 && a[p].sh[index+1] <= '9' && a[p].sh[index+1] != ')' && a[p].sh[index+1] != '(') {
+						for (z=index+1; z < a[p].sh.size() && a[p].sh[z] <= '9' && a[p].sh[z] != ')' && a[p].sh[z] != '('; z++);
+						t = t.append(a[p].sh,index+1,z-index);
+						m = stoi(t);
+						ans += e[j].mass*m;
+						index+=z-index; 
+					} else {
+						ans += e[j].mass;
+						index++;
+					}
 					j=107;
 				}
 			}				
 		}
 	}
 
-	return;
+	return ans;
 }
 
 void swap(int l, int r)
